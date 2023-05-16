@@ -32,7 +32,7 @@ const addUser= async (req, res) => {
     let newPasword = bcrypt.hashSync(password, salt);
     try {
         const newUser = await Users.create({email, password:newPasword, name, lastName});
-        return res.json(newUser);
+        return res.json({...newUser, status: 200});
     } catch (error) {
         console.log("🚀 ~ file: UsersController.js:36 ~ addUser ~ error:", error)
     }
